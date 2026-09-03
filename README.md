@@ -1,4 +1,4 @@
-# Task Submission - Samarth
+# Task Submission - Samarth Koli
 
 Async Labs Internship Screening • Candidate Material
 
@@ -19,6 +19,6 @@ Async Labs Internship Screening • Candidate Material
 
 **Incomplete/Next steps:** I would extend the 3D interactions with richer device states, add user-testing validation for design decisions, and include motion/accessibility toggles for broader user comfort.
 
-**Time spent:** ___ hours.
+**Time spent:** 3 day.
 
 **Tools used:** React, Vite, Vanilla CSS, Lucide React, Vercel.
