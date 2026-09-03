@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Calendar, 
   Clock, 
@@ -37,23 +37,23 @@ export default function InteractiveStudio() {
     { key: 'custom', name: 'Custom Content', icon: Edit3 },
   ];
 
-  const triggerFlash = (callback) => {
+  const triggerFlash = useCallback((callback) => {
     setIsFlashing(true);
     setTimeout(() => {
       if (callback) callback();
       setIsFlashing(false);
     }, 380);
-  };
+  }, []);
 
-  const handleSelectPreset = (presetKey) => {
+  const handleSelectPreset = useCallback((presetKey) => {
     triggerFlash(() => setActivePreset(presetKey));
-  };
+  }, [triggerFlash]);
 
-  const handleSendCustomText = (e) => {
+  const handleSendCustomText = useCallback((e) => {
     e.preventDefault();
     if (!customText.trim()) return;
     triggerFlash(() => setActivePreset('custom'));
-  };
+  }, [customText, triggerFlash]);
 
   // Scroll Parallax 3D Movement Engine & Auto Preset Switcher
   useEffect(() => {
@@ -94,7 +94,7 @@ export default function InteractiveStudio() {
   }, []);
 
   // Mouse Move Interactive 3D Tilt
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -108,11 +108,11 @@ export default function InteractiveStudio() {
       rotateY: mouseRotateY,
       rotateX: 8 + mouseRotateX
     }));
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setTransform3D({ rotateX: 8, rotateY: -2, translateY: 0, scale: 1 });
-  };
+  }, []);
 
   return (
     <section id="interactive-display" className="section" ref={containerRef}>

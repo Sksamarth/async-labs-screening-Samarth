@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { StyleProvider } from './context/StyleContext';
 import AmbientBackground from './components/AmbientBackground';
 import Navbar from './components/Navbar';
@@ -6,12 +6,14 @@ import Hero from './components/Hero';
 import ProductGallery from './components/ProductGallery';
 import InteractiveStudio from './components/InteractiveStudio';
 import WhatYouCanDo from './components/WhatYouCanDo';
-import WorkflowSection from './components/WorkflowSection';
-import HardwareSpecs from './components/HardwareSpecs';
-import WorkspacesSection from './components/WorkspacesSection';
-import CompanionAppCTA from './components/CompanionAppCTA';
-import Footer from './components/Footer';
 import FloatingStyleToggle from './components/FloatingStyleToggle';
+
+// Lazy load below-the-fold components to improve initial load time
+const WorkflowSection = lazy(() => import('./components/WorkflowSection'));
+const HardwareSpecs = lazy(() => import('./components/HardwareSpecs'));
+const WorkspacesSection = lazy(() => import('./components/WorkspacesSection'));
+const CompanionAppCTA = lazy(() => import('./components/CompanionAppCTA'));
+const Footer = lazy(() => import('./components/Footer'));
 
 export default function App() {
   return (
@@ -25,12 +27,16 @@ export default function App() {
           <ProductGallery />
           <InteractiveStudio />
           <WhatYouCanDo />
-          <WorkflowSection />
-          <HardwareSpecs />
-          <WorkspacesSection />
-          <CompanionAppCTA />
+          <Suspense fallback={<div style={{ minHeight: '50vh' }} />}>
+            <WorkflowSection />
+            <HardwareSpecs />
+            <WorkspacesSection />
+            <CompanionAppCTA />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
         <FloatingStyleToggle />
       </div>
     </StyleProvider>
