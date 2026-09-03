@@ -1,4 +1,4 @@
-# Task Submission - Samarth
+#async-labs-screening - Samarth
 
 Async Labs Internship Screening • Candidate Material
 
@@ -26,7 +26,7 @@ Key decisions prioritized performance, clean component architecture, and usabili
 - Add lightweight automated UI checks for key interactions and responsive breakpoints.
 
 ## Time spent
-___ hours
+- 3 days
 
 ## Tools used
 - React
