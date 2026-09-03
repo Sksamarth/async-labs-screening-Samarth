@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           <a
-            href="https://github.com/Samarth/async-labs-screening-Samarth"
+            href="https://github.com/Sksamarth/async-labs-screening-Samarth"
             target="_blank"
             rel="noreferrer"
             className="btn-secondary"

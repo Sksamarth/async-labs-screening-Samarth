@@ -64,7 +64,7 @@ export default function Navbar() {
 
           {/* GitHub Button — hidden on tablet/mobile */}
           <a
-            href="https://github.com/Samarth/async-labs-screening-Samarth"
+            href="https://github.com/Sksamarth/async-labs-screening-Samarth"
             target="_blank"
             rel="noreferrer"
             className="btn-secondary github-btn"
@@ -125,7 +125,7 @@ export default function Navbar() {
           ))}
 
           <a
-            href="https://github.com/Samarth/async-labs-screening-Samarth"
+            href="https://github.com/Sksamarth/async-labs-screening-Samarth"
             target="_blank"
             rel="noreferrer"
             className="btn-secondary"
