@@ -86,24 +86,18 @@ export default function Hero() {
           </div>
 
           {/* Bottom floating stats bar */}
-          <div style={{
-            position: 'absolute', bottom: '-20px', left: '50%', transform: 'translateX(-50%)',
-            background: 'var(--bg-secondary)', border: '2px solid var(--text-main)',
-            borderRadius: '40px', padding: '10px 28px', display: 'flex', gap: '28px',
-            boxShadow: '4px 4px 0px var(--text-main)', whiteSpace: 'nowrap',
-            zIndex: 10
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', fontWeight: '700' }}>
+          <div className="hero-stats-bar">
+            <div className="stat-item">
               <BatteryCharging size={16} color="#22c55e" />
               <span>1 Month Battery</span>
             </div>
-            <div style={{ width: '1px', background: 'var(--bg-tertiary)' }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', fontWeight: '700' }}>
+            <div className="stat-divider" />
+            <div className="stat-item">
               <Zap size={16} color="#f59e0b" />
               <span>Ultra Low Power</span>
             </div>
-            <div style={{ width: '1px', background: 'var(--bg-tertiary)' }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem', fontWeight: '700' }}>
+            <div className="stat-divider" />
+            <div className="stat-item">
               <Eye size={16} color="#6366f1" />
               <span>Paper-like Clarity</span>
             </div>
@@ -118,6 +112,52 @@ export default function Hero() {
       </div>
 
       <style>{`
+        .hero-stats-bar {
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--bg-secondary);
+          border: 2px solid var(--text-main);
+          border-radius: 40px;
+          padding: 10px 28px;
+          display: flex;
+          gap: 28px;
+          box-shadow: 4px 4px 0px var(--text-main);
+          white-space: nowrap;
+          z-index: 10;
+          width: max-content;
+          max-width: 95vw;
+        }
+        .stat-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.82rem;
+          font-weight: 700;
+        }
+        .stat-divider {
+          width: 1px;
+          background: var(--bg-tertiary);
+        }
+        
+        @media (max-width: 600px) {
+          .hero-stats-bar {
+            padding: 12px 16px;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-radius: 20px;
+            bottom: -30px;
+          }
+          .stat-divider {
+            display: none;
+          }
+          .stat-item {
+            font-size: 0.75rem;
+          }
+        }
+
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(6px); }
